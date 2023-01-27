@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <div class="row">
+    
+
+        <div *ngFor="let article of articles" class="col mt-3">
+            <div class="card" style="width: 18rem;">
+                <img  [src]="'http://localhost:8080/images/' + article.pircture" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{article.name}}</h5>
+                    <div class="text-end">
+                        <span class="bg-primary rounded py-2 px-2 text-white">{{article.price | currency }}</span>
+                    </div>
+                </div>
+              </div>
+        </div>    
+
+
+      </div>
+
+</div>
+
+<button type="button" class="btn btn-danger rouded-cicrle btn-lg btn-block fixed-bottom-right" data-bs-toggle="modal" data-bs-target="#exampleModal" >+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Article</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <input type="text" name="name" class="form-control" placeholder="Article name" [(ngModel)]="article.name">
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="price" class="form-control" placeholder="Price" [(ngModel)]="article.price">
+                </div>
+                <div class="mb-3">
+                    <input type="file" name="pircture" class="form-control" (change)="uploadImage($event)">
+                  </div>
+                <button class="btn btn-primary" (click)="addArticle()">Create</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
